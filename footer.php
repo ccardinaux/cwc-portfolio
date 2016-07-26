@@ -10,14 +10,12 @@
  */
 
 ?>
-
+		</div><!-- .unit.whole -->
 	</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'cwc-portfolio' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'cwc-portfolio' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'cwc-portfolio' ), 'cwc-portfolio', '<a href="http://www.charlescardinaux.com" rel="designer">Charles Cardinaux</a>' ); ?>
+	<footer id="colophon" class="site-footer grid wrap wider" role="contentinfo">
+		<div class="site-info unit whole">
+			<small>© <?php echo date('Y'); ?> Charles Cardinaux | The Fell Types used on this site are digitally reproduced by <a href="http://www.iginomarini.com" target="_blank">Igino Marini</a>.</small>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
