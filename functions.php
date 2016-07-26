@@ -58,12 +58,6 @@ function cwc_portfolio_setup() {
 		'gallery',
 		'caption',
 	) );
-
-	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'cwc_portfolio_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
 }
 endif;
 add_action( 'after_setup_theme', 'cwc_portfolio_setup' );
@@ -92,8 +86,8 @@ function cwc_portfolio_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'cwc-portfolio' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 }
 add_action( 'widgets_init', 'cwc_portfolio_widgets_init' );
@@ -102,7 +96,11 @@ add_action( 'widgets_init', 'cwc_portfolio_widgets_init' );
  * Enqueue scripts and styles.
  */
 function cwc_portfolio_scripts() {
-	wp_enqueue_style( 'cwc-portfolio-style', get_stylesheet_directory_uri() . '/stylesheets/style.css' );
+	wp_enqueue_style( 'cwc-portfolio-google-font', 'https://fonts.googleapis.com/css?family=Noticia+Text:400,400i,700,700i' );
+
+	wp_enqueue_style( 'cwc-portfolio-style', get_stylesheet_directory_uri() . '/stylesheets/style.css', array('cwc-portfolio-google-font') );
+
+	wp_enqueue_script( 'cwc-portfolio-icons', 'https://use.fortawesome.com/f72eb08a.js', array(), '', false );
 
 	wp_enqueue_script( 'cwc-portfolio-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
@@ -113,11 +111,6 @@ function cwc_portfolio_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'cwc_portfolio_scripts' );
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -135,6 +128,6 @@ require get_template_directory() . '/inc/extras.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
- * Load Jetpack compatibility file.
+ * Portfolio custom post type
  */
-require get_template_directory() . '/inc/jetpack.php';
+require get_template_directory() . '/inc/portfolio-post-type.php';
